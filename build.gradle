@@ -25,3 +25,10 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext.support_version = "26.1.0"
+ext.arch_version = "1.0.0"
+ext.retrofit_version = "2.2.0"
+ext.dagger_version = "2.11"
+ext.timber_version = "4.5.1"
+ext.glide_version = "3.8.0"
