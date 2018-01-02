@@ -66,10 +66,10 @@ public class MainActivity extends SupportActivity implements HasSupportFragmentI
                 showHideFragment(techFragment);
                 break;
             case R.id.tow:
-                showHideFragment(techFragment);
+                showHideFragment(techFragment2);
                 break;
             case R.id.thr:
-                showHideFragment(techFragment);
+                showHideFragment(techFragment3);
                 break;
         }
         return true;

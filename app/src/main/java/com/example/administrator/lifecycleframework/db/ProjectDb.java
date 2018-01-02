@@ -7,16 +7,16 @@ package com.example.administrator.lifecycleframework.db;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.example.administrator.lifecycleframework.vo.CourseSearchResult;
+import com.example.administrator.lifecycleframework.vo.TechBean;
 
 
 /**
  * Main database description.
  */
-@Database(entities = {CourseSearchResult.class}, version = 5,exportSchema = false)
+@Database(entities = {TechBean.class}, version = 5, exportSchema = false)
 public abstract class ProjectDb extends RoomDatabase {
 
-    abstract public HomeDao homeDao();
+    abstract public TechDao techDao();
 
     abstract public UserDao userDao();
 }

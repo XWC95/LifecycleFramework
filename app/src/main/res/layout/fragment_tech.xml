@@ -7,13 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/course_list"
+        <com.example.administrator.lifecycleframework.widget.RecyclerRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/item_tech" />
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/course_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="LinearLayoutManager"
+                tools:listitem="@layout/item_tech" />
+
+        </com.example.administrator.lifecycleframework.widget.RecyclerRefreshLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

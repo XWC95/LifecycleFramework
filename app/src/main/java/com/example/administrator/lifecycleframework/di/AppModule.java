@@ -5,10 +5,9 @@ import android.app.Application;
 import android.arch.persistence.room.Room;
 
 
-import com.example.administrator.lifecycleframework.App;
 import com.example.administrator.lifecycleframework.api.OnlyService;
-import com.example.administrator.lifecycleframework.db.HomeDao;
 import com.example.administrator.lifecycleframework.db.ProjectDb;
+import com.example.administrator.lifecycleframework.db.TechDao;
 import com.example.administrator.lifecycleframework.db.UserDao;
 import com.example.administrator.lifecycleframework.util.LiveDataCallAdapterFactory;
 
@@ -26,7 +25,7 @@ class AppModule {
     @Provides
     OnlyService provideGithubService() {
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl(OnlyService.HOST)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(new LiveDataCallAdapterFactory())
                 .build()
@@ -41,8 +40,8 @@ class AppModule {
 
     @Singleton
     @Provides
-    HomeDao provideHomeDao(ProjectDb db) {
-        return db.homeDao();
+    TechDao provideTechDao(ProjectDb db) {
+        return db.techDao();
     }
 
 
