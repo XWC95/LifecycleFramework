@@ -1,37 +1,27 @@
 package com.example.administrator.lifecycleframework;
 
-import android.app.Activity;
-import android.arch.lifecycle.LifecycleActivity;
-import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.administrator.lifecycleframework.databinding.ActivityMainBinding;
+import com.example.administrator.lifecycleframework.ui.home.TaoPiaoFragment;
 import com.example.administrator.lifecycleframework.ui.home.TechFragment;
 
 import javax.inject.Inject;
 
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasActivityInjector;
-import dagger.android.HasFragmentInjector;
 import dagger.android.support.HasSupportFragmentInjector;
-import me.yokeyword.fragmentation.ExtraTransaction;
-import me.yokeyword.fragmentation.ISupportActivity;
 import me.yokeyword.fragmentation.SupportActivity;
-import me.yokeyword.fragmentation.SupportActivityDelegate;
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public class MainActivity extends SupportActivity implements HasSupportFragmentInjector, BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Inject
     DispatchingAndroidInjector<Fragment> dispatchingAndroidInjector;
 
-    private TechFragment techFragment;
+    private TaoPiaoFragment taoPiaoFragment;
     private TechFragment techFragment2;
     private TechFragment techFragment3;
     BottomNavigationView navigationView;
@@ -41,10 +31,10 @@ public class MainActivity extends SupportActivity implements HasSupportFragmentI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        techFragment = new TechFragment();
+        taoPiaoFragment = new TaoPiaoFragment();
         techFragment2 = new TechFragment();
         techFragment3 = new TechFragment();
-        loadMultipleRootFragment(R.id.fl_main_content, 0, techFragment, techFragment2, techFragment3);
+        loadMultipleRootFragment(R.id.fl_main_content, 0, taoPiaoFragment, techFragment2, techFragment3);
 
         navigationView = findViewById(R.id.navigation);
         navigationView.setOnNavigationItemSelectedListener(this);
@@ -63,7 +53,7 @@ public class MainActivity extends SupportActivity implements HasSupportFragmentI
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.one:
-                showHideFragment(techFragment);
+                showHideFragment(taoPiaoFragment);
                 break;
             case R.id.tow:
                 showHideFragment(techFragment2);

@@ -1,5 +1,6 @@
 package com.example.administrator.lifecycleframework.ui.home;
 
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -15,6 +16,10 @@ import com.example.administrator.lifecycleframework.vo.TechBean;
  */
 
 public class TechAdapter extends DataBoundListAdapter<TechBean, ItemTechBinding> {
+
+    public TechAdapter() {
+        super(ONLY_FOOTER);
+    }
 
     @Override
     protected ItemTechBinding createBinding(ViewGroup parent) {

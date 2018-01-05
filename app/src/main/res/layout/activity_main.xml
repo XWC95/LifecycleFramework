@@ -5,6 +5,17 @@
     android:layout_height="match_parent">
 
 
+    <FrameLayout
+        android:id="@+id/fl_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/navigation" />
+
+    <View
+        style="@style/horizontal_line"
+        app:layout_constraintBottom_toTopOf="@id/navigation" />
+
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
@@ -13,16 +24,5 @@
         app:itemTextColor="@drawable/tab_text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/menu_home_bottom" />
-
-    <FrameLayout
-        android:id="@+id/fl_main_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="56dp"
-        app:layout_constraintBottom_toTopOf="@id/navigation" />
-
-    <View
-        style="@style/horizontal_line"
-        app:layout_constraintBottom_toTopOf="@id/navigation" />
 
 </android.support.constraint.ConstraintLayout>

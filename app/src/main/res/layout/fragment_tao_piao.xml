@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/layout_coordinator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/layout_actionbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@android:color/white"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:id="@+id/local"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上海"
+                        android:textColor="#000"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@id/ll"
+                        app:layout_constraintTop_toTopOf="@id/ll" />
+
+                    <ImageView
+                        android:id="@+id/image_down"
+                        android:layout_width="8dp"
+                        android:layout_height="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:src="@mipmap/down"
+                        app:layout_constraintBottom_toBottomOf="@id/ll"
+                        app:layout_constraintLeft_toRightOf="@id/local"
+                        app:layout_constraintTop_toTopOf="@id/ll" />
+
+
+                    <LinearLayout
+                        android:id="@+id/ll"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/title_search_bg"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_weight="1"
+                        app:layout_constraintLeft_toRightOf="@id/image_down"
+                        app:layout_constraintRight_toLeftOf="@id/image_qrCode"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="17dp"
+                            android:layout_height="17dp"
+                            android:layout_marginRight="1dp"
+                            android:src="@mipmap/search" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="1dp"
+                            android:text="搜影片、影院、影人"
+                            android:textColor="#AFAFAF"
+                            android:textSize="12dp" />
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/image_qrCode"
+                        android:layout_width="17dp"
+                        android:layout_height="0dp"
+                        android:layout_marginRight="15dp"
+                        android:gravity="center"
+                        android:src="@mipmap/qr_code"
+                        app:layout_constraintBottom_toBottomOf="@id/ll"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/ll" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+            </android.support.v7.widget.Toolbar>
+
+
+            <com.example.administrator.lifecycleframework.widget.magicindicator.MagicIndicator
+                android:id="@+id/magic_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="5dp" />
+        </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </android.support.design.widget.CoordinatorLayout>
+</layout>

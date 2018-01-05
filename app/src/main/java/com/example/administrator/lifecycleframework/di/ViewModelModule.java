@@ -4,6 +4,8 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 
+import com.example.administrator.lifecycleframework.ui.home.TaoPiaoTab1ViewModel;
+import com.example.administrator.lifecycleframework.ui.home.TaoPiaoViewModel;
 import com.example.administrator.lifecycleframework.ui.home.TechViewModel;
 import com.example.administrator.lifecycleframework.viewmodel.ProjectViewModelFactory;
 
@@ -22,5 +24,17 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TechViewModel.class)
     abstract ViewModel bindTechViewModel(TechViewModel techViewModel);
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TaoPiaoViewModel.class)
+    abstract ViewModel bindTaoPiaoViewModel(TaoPiaoViewModel techViewModel);
+
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TaoPiaoTab1ViewModel.class)
+    abstract ViewModel bindTaoPiaoTab1ViewModel(TaoPiaoTab1ViewModel taoPiaoTab1ViewModel);
 
 }

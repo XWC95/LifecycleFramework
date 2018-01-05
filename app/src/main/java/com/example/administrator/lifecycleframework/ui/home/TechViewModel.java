@@ -37,13 +37,21 @@ public class TechViewModel extends ViewModel {
     }
 
 
-
     void refresh() {
         if (techId.getValue() != null) {
+            techId.getValue().page = 1;
             techId.setValue(techId.getValue());
         }
     }
 
+    void loadMore() {
+        if (techId.getValue() != null) {
+            techId.getValue().page++;
+            TechId value = techId.getValue();
+            techId.setValue(value);
+        }
+
+    }
 
     public LiveData<Resource<List<TechBean>>> getTech() {
         return tech;
@@ -55,6 +63,7 @@ public class TechViewModel extends ViewModel {
         techId.page = page;
         this.techId.setValue(techId);
     }
+
 
     static class TechId {
         public String techType;

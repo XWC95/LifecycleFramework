@@ -24,6 +24,9 @@ import javax.inject.Inject;
 
 import me.yokeyword.fragmentation.SupportFragment;
 
+import static com.example.administrator.lifecycleframework.ui.common.DataBoundListAdapter.STATE_LOADING;
+import static com.example.administrator.lifecycleframework.ui.common.DataBoundListAdapter.STATE_NO_MORE;
+
 /**
  * Created by Administrator on 2017/12/29.
  */
@@ -61,11 +64,25 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
         viewModel.setTechId("Android", 0);
         viewModel.getTech().observe(this, listResource -> {
             if (listResource.status == Status.SUCCESS) {
-                if (listResource.data != null) {
-                    if (binding.get().refresh.isRefreshing()) {
+                if (listResource.data != null && listResource.data.size() > 0) {
+
+                    if (listResource.data.get(0).page == 1) {  //下拉刷新
                         binding.get().refresh.setRefreshing(false);
+                        adapter.replace(listResource.data);
+                    } else {  //加载更多
+
+                        if (listResource.data.size() < 10) {
+                            adapter.setState(STATE_NO_MORE, true);
+                            binding.get().refresh.setOnLoading(true);  //设置不可加更多
+                        } else {
+                            binding.get().refresh.setOnLoading(false);  //设置可加加载
+                        }
+
+                        listResource.data.addAll(0, adapter.getItems());
+                        adapter.replace(listResource.data);
                     }
-                    adapter.replace(listResource.data);
+
+
                 }
             }
         });
@@ -74,10 +91,9 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
     private void init() {
         adapter = new TechAdapter();
         binding.get().courseList.setAdapter(adapter);
+
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(TechViewModel.class);
-
         binding.get().refresh.setSuperRefreshLayoutListener(this);
-
     }
 
     @Override
@@ -87,6 +103,7 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
 
     @Override
     public void onLoadMore() {
-
+        adapter.setState(STATE_LOADING, true);
+        viewModel.loadMore();
     }
 }
