@@ -2,6 +2,7 @@ package com.example.administrator.lifecycleframework.ui.home;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingComponent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.administrator.lifecycleframework.R;
+import com.example.administrator.lifecycleframework.binding.FragmentDataBindingComponent;
 import com.example.administrator.lifecycleframework.databinding.FragmentTaoPiaoBinding;
 import com.example.administrator.lifecycleframework.databinding.FragmentTaopiaoTab1Binding;
 import com.example.administrator.lifecycleframework.di.Injectable;
@@ -57,7 +59,7 @@ public class TaoPiaoTab1Fragment extends SupportFragment implements Injectable {
 
     private void init() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(TaoPiaoTab1ViewModel.class);
-        binding.get().recycleView.setAdapter(new TiaoPiaoTab1RecycleAdapter(_mActivity));
+        binding.get().recycleView.setAdapter(new TiaoPiaoTab1RecycleAdapter(_mActivity, new FragmentDataBindingComponent(this)));
     }
 
 

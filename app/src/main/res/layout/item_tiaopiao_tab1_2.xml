@@ -94,61 +94,13 @@
 
 
         <View
-            android:id="@+id/view_line"
-            android:layout_width="0dp"
-            android:layout_height="1px"
-            android:layout_marginLeft="7dp"
-            android:layout_marginTop="7dp"
-            android:background="@color/list_divider"
-            app:layout_constraintLeft_toRightOf="@id/image_covers"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_covers" />
-
-
-        <TextView
-            android:id="@+id/tv_issue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="争议"
-            android:textColor="#E7A449"
-            android:textSize="12sp"
-            app:layout_constraintLeft_toLeftOf="@id/view_line"
-            app:layout_constraintTop_toBottomOf="@id/view_line" />
-
-
-        <View
-            android:id="@+id/vertical_line"
-            android:layout_width="1px"
-            android:layout_height="0dp"
-            android:layout_marginLeft="7dp"
-            android:background="@color/list_divider"
-            app:layout_constraintBottom_toBottomOf="@id/tv_issue"
-            app:layout_constraintLeft_toRightOf="@id/tv_issue"
-            app:layout_constraintTop_toTopOf="@+id/tv_issue" />
-
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="7dp"
-            android:ellipsize="end"
-            android:singleLine="true"
-            android:text="承上启下的星战8,到底让不然人满意？"
-            android:textColor="#82837E"
-            android:textSize="12sp"
-            app:layout_constraintLeft_toRightOf="@id/vertical_line"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tv_issue" />
-
-        <View
             android:layout_width="0dp"
             android:layout_height="1px"
             android:layout_marginTop="10dp"
             android:background="@color/list_divider"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_issue" />
+            app:layout_constraintTop_toBottomOf="@id/image_covers" />
 
 
     </android.support.constraint.ConstraintLayout>
