@@ -62,8 +62,8 @@ public class TaoPiaoViewModel extends ViewModel {
                 SimplePagerTitleView simplePagerTitleView = new SimplePagerTitleView(context);
                 simplePagerTitleView.setText(mDataList.get(index));
                 simplePagerTitleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-                simplePagerTitleView.setNormalColor(Color.parseColor("#616161"));
-                simplePagerTitleView.setSelectedColor(Color.parseColor("#f57c00"));
+                simplePagerTitleView.setNormalColor(Color.parseColor("#6A6B66"));
+                simplePagerTitleView.setSelectedColor(Color.parseColor("#D35F61"));
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -78,9 +78,9 @@ public class TaoPiaoViewModel extends ViewModel {
                 LinePagerIndicator indicator = new LinePagerIndicator(context);
                 indicator.setStartInterpolator(new AccelerateInterpolator());
                 indicator.setEndInterpolator(new DecelerateInterpolator(1.6f));
-                indicator.setXOffset(UIUtil.dip2px(context, 38));
+                indicator.setXOffset(UIUtil.dip2px(context, 33)); //设置偏移量（indicator宽）
                 indicator.setLineHeight(UIUtil.dip2px(context, 2));
-                indicator.setColors(Color.parseColor("#f57c00"));
+                indicator.setColors(Color.parseColor("#D35F61"));
                 return indicator;
             }
 
@@ -105,8 +105,7 @@ public class TaoPiaoViewModel extends ViewModel {
         adapter.addTab("即将上映", "2", TaoPiaoTab1Fragment.class, null);
         adapter.addTab("小视频", "3", TaoPiaoTab1Fragment.class, null);
         adapter.addTab("排行榜", "4", TaoPiaoTab1Fragment.class, null);
-
-
+        binding.get().viewPager.setOffscreenPageLimit(5);
         binding.get().viewPager.setAdapter(adapter);
     }
 }

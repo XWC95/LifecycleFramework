@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.example.administrator.lifecycleframework.R;
 import com.example.administrator.lifecycleframework.databinding.ItemTechBinding;
+import com.example.administrator.lifecycleframework.databinding.LayoutRecyclerFooterViewBinding;
 import com.example.administrator.lifecycleframework.ui.common.DataBoundListAdapter;
 import com.example.administrator.lifecycleframework.util.Objects;
 import com.example.administrator.lifecycleframework.vo.TechBean;
@@ -18,7 +19,7 @@ import com.example.administrator.lifecycleframework.vo.TechBean;
 public class TechAdapter extends DataBoundListAdapter<TechBean, ItemTechBinding> {
 
     public TechAdapter() {
-        super(ONLY_FOOTER);
+        super(NEITHER);
     }
 
     @Override
@@ -27,6 +28,11 @@ public class TechAdapter extends DataBoundListAdapter<TechBean, ItemTechBinding>
                 .inflate(LayoutInflater.from(parent.getContext()),
                         R.layout.item_tech, parent, false);
         return binding;
+    }
+
+    @Override
+    protected void bindFooter(LayoutRecyclerFooterViewBinding binding, int mState) {
+        binding.setState(mState);
     }
 
     @Override

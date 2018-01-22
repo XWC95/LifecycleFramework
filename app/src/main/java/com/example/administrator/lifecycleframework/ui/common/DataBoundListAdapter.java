@@ -103,13 +103,13 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
         switch (viewType) {
             case VIEW_TYPE_HEADER:
                 //TODO
+                return new DataBoundViewHolder<>(footBinding(parent));
             case VIEW_TYPE_FOOTER:
                 return new DataBoundViewHolder<>(footBinding(parent));
             default:
                 V binding = createBinding(parent);
                 return new DataBoundViewHolder<>(binding);
         }
-
     }
 
     protected abstract V createBinding(ViewGroup parent);
@@ -130,32 +130,35 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
                 break;
             case VIEW_TYPE_FOOTER:
                 LayoutRecyclerFooterViewBinding binding = (LayoutRecyclerFooterViewBinding) holder.binding;
-                switch (mState) {
-                    case STATE_INVALID_NETWORK:
-                        binding.tvFooter.setText("网络错误");
-                        binding.pbFooter.setVisibility(View.GONE);
-                        break;
-                    case STATE_LOAD_MORE:
-                    case STATE_LOADING:
-                        binding.tvFooter.setText("正在加载…");
-                        binding.pbFooter.setVisibility(View.VISIBLE);
-                        break;
-                    case STATE_NO_MORE:
-                        binding.tvFooter.setText("没有更多数据");
-                        binding.pbFooter.setVisibility(View.GONE);
-                        break;
-                    case STATE_REFRESHING:
-                        binding.tvFooter.setText("正在刷新");
-                        binding.pbFooter.setVisibility(View.GONE);
-                        break;
-                    case STATE_LOAD_ERROR:
-                        binding.tvFooter.setText("加载失败");
-                        binding.pbFooter.setVisibility(View.GONE);
-                        break;
-                    case STATE_HIDE:
-                        binding.getRoot().setVisibility(View.GONE);
-                        break;
-                }
+                bindFooter(binding,mState);
+                holder.binding.executePendingBindings();
+//                switch (mState) {
+//                    case STATE_INVALID_NETWORK:
+//                        binding.tvFooter.setText("网络错误");
+//                        binding.pbFooter.setVisibility(View.GONE);
+//                        break;
+//                    case STATE_LOAD_MORE:
+//                    case STATE_LOADING:
+//                        binding.tvFooter.setText("正在加载…");
+//                        binding.pbFooter.setVisibility(View.VISIBLE);
+//                        break;
+//                    case STATE_NO_MORE:
+//                        binding.tvFooter.setText("没有更多数据");
+//                        binding.pbFooter.setVisibility(View.GONE);
+//                        break;
+//                    case STATE_REFRESHING:
+//                        binding.tvFooter.setText("正在刷新");
+//                        binding.pbFooter.setVisibility(View.GONE);
+//                        break;
+//                    case STATE_LOAD_ERROR:
+//                        binding.tvFooter.setText("加载失败");
+//                        binding.pbFooter.setVisibility(View.GONE);
+//                        break;
+//                    case STATE_HIDE:
+//                        binding.getRoot().setVisibility(View.GONE);
+//                        break;
+//                }
+//                holder.binding.executePendingBindings();
                 break;
             default:
                 //noinspection ConstantConditions
@@ -164,6 +167,8 @@ public abstract class DataBoundListAdapter<T, V extends ViewDataBinding>
                 break;
         }
     }
+
+    protected abstract void bindFooter(LayoutRecyclerFooterViewBinding binding, int mState);
 
     @SuppressLint("StaticFieldLeak")
     @MainThread

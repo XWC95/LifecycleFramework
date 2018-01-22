@@ -43,16 +43,12 @@ public class TechRepository {
                 if (item.error) {
                     return;
                 }
-                for (int i = 0; i < item.results.size() && item.results.size() > 0; i++) {
-                    item.results.get(i).page = page;
-                }
                 techDao.insertTechs(item.results);
-
             }
 
             @Override
             protected boolean shouldFetch(@Nullable List<TechBean> data) {
-                return data == null || data.isEmpty();
+                return /*data == null || data.isEmpty()*/ true;
             }
 
             @NonNull
@@ -66,9 +62,16 @@ public class TechRepository {
             protected LiveData<ApiResponse<GankHttpResponse<List<TechBean>>>> createCall() {
                 return mService.getTechList(tech, 10, page);
             }
+
+            @Override
+            protected GankHttpResponse<List<TechBean>> processResponse(ApiResponse<GankHttpResponse<List<TechBean>>> response) {
+                if (!response.body.error) {
+                    for (int i = 0; i < response.body.results.size() && response.body.results.size() > 0; i++) {
+                        response.body.results.get(i).page = page;
+                    }
+                }
+                return super.processResponse(response);
+            }
         }.asLiveData();
-
     }
-
-
 }

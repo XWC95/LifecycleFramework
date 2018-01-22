@@ -11,9 +11,9 @@ import android.widget.Toast;
 import com.example.administrator.lifecycleframework.App;
 import com.example.administrator.lifecycleframework.AppExecutors;
 import com.example.administrator.lifecycleframework.api.ApiResponse;
+import com.example.administrator.lifecycleframework.util.Objects;
 import com.example.administrator.lifecycleframework.vo.Resource;
 
-import java.util.Objects;
 
 
 /**
@@ -94,7 +94,11 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
     @WorkerThread
     protected abstract void saveCallResult(@NonNull RequestType item);
 
-    // 调用该方法判断数据库中的数据是否应该从网络获取并更新。
+    /**
+     *
+     * @param data  数据库保存的数据
+     * @return      是否重网络重新获取
+     */
     @MainThread
     protected abstract boolean shouldFetch(@Nullable ResultType data);
 

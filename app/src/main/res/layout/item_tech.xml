@@ -28,8 +28,6 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:foreground="?attr/selectableItemBackground"
-            android:transitionName="shareView"
             app:cardCornerRadius="3dp"
             app:cardElevation="2dp"
             app:contentPadding="8dp">

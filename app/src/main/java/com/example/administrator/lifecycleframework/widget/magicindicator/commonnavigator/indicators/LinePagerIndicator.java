@@ -55,7 +55,7 @@ public class LinePagerIndicator extends View implements IPagerIndicator {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setStyle(Paint.Style.FILL);
         mLineHeight = UIUtil.dip2px(context, 3);
-        mLineWidth = UIUtil.dip2px(context, 10);
+        mLineWidth = UIUtil.dip2px(context, 20);
     }
 
     @Override

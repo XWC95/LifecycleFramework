@@ -61,7 +61,7 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
     }
 
     private void initData() {
-        viewModel.setTechId("Android", 0);
+        viewModel.setTechId("Android", 1);
         viewModel.getTech().observe(this, listResource -> {
             if (listResource.status == Status.SUCCESS) {
                 if (listResource.data != null && listResource.data.size() > 0) {
@@ -70,7 +70,6 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
                         binding.get().refresh.setRefreshing(false);
                         adapter.replace(listResource.data);
                     } else {  //加载更多
-
                         if (listResource.data.size() < 10) {
                             adapter.setState(STATE_NO_MORE, true);
                             binding.get().refresh.setOnLoading(true);  //设置不可加更多
@@ -81,7 +80,6 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
                         listResource.data.addAll(0, adapter.getItems());
                         adapter.replace(listResource.data);
                     }
-
 
                 }
             }
@@ -94,6 +92,7 @@ public class TechFragment extends SupportFragment implements Injectable, Recycle
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(TechViewModel.class);
         binding.get().refresh.setSuperRefreshLayoutListener(this);
+        binding.get().refresh.setOnLoading(false);
     }
 
     @Override
